@@ -1,0 +1,38 @@
+employee:
+ build: Employee
+ ports:
+  - "8080"
+ links:
+  - mongodb
+booking:
+ build: Booking
+ ports:
+  - "8080"
+ links:
+  - mongodb
+project:
+ build: Project
+ ports:
+  - "8080"
+ links:
+  - mongodb
+mongodb:
+ image: mongo
+ha_employee:
+ image: tutum/haproxy
+ links:
+   - employee
+ ports:
+   - "8080:80"
+ha_booking:
+ image: tutum/haproxy
+ links:
+   - booking
+ ports:
+   - "8081:80"
+ha_project:
+ image: tutum/haproxy
+ links:
+   - project
+ ports:
+   - "8082:80"   
