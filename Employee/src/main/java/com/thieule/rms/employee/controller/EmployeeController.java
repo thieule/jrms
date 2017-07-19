@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.thieule.rms.employee.model.Employee;
 import com.thieule.rms.employee.repo.EmployeeRepository;
 import com.thieule.rms.employee.service.KafkaMessageProducer;
@@ -18,6 +19,7 @@ public class EmployeeController {
 	
 	@Autowired
 	EmployeeRepository employeeRepository;
+	
 	@Autowired
 	KafkaMessageProducer kafkaMessageProducer;
 	

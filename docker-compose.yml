@@ -21,8 +21,22 @@ project:
   - kafka
 mongodb:
  image: mongo
+
 kafka:
- image: spotify/kafka
+    image: 'wurstmeister/kafka:0.10.1.1'
+    ports:
+     - "9093:9093"
+    hostname: kafka
+    links: 
+     - zookeeper
+    environment:
+     - KAFKA_ADVERTISED_HOST_NAME=127.0.0.1
+     - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+     - KAFKA_ADVERTISED_PORT=9092
+zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2182:2182"
 ha_employee:
  image: tutum/haproxy
  links:
