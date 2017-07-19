@@ -4,20 +4,25 @@ employee:
   - "8080"
  links:
   - mongodb
+  - kafka
 booking:
  build: Booking
  ports:
   - "8080"
  links:
   - mongodb
+  - kafka
 project:
  build: Project
  ports:
   - "8080"
  links:
   - mongodb
+  - kafka
 mongodb:
  image: mongo
+kafka:
+ image: spotify/kafka
 ha_employee:
  image: tutum/haproxy
  links:
