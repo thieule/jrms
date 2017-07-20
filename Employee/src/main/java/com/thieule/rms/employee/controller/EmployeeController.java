@@ -1,6 +1,8 @@
 package com.thieule.rms.employee.controller;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.thieule.rms.employee.model.Employee;
 import com.thieule.rms.employee.repo.EmployeeRepository;
+import com.thieule.rms.employee.service.KafkaMessageListerner;
 import com.thieule.rms.employee.service.KafkaMessageProducer;
 
 @RestController
@@ -22,6 +25,9 @@ public class EmployeeController {
 	
 	@Autowired
 	KafkaMessageProducer kafkaMessageProducer;
+	
+	@Autowired
+	KafkaMessageListerner kafkaMessageListerner;
 	
     
 	@RequestMapping(method = RequestMethod.POST)
@@ -42,6 +48,12 @@ public class EmployeeController {
          * Kafka process
          */
 		kafkaMessageProducer.sendMessage("Trigger from all employee page");
+		try {
+			kafkaMessageListerner.latch.await(10, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
 		return employeeRepository.findAll();
 	}

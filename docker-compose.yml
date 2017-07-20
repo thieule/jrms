@@ -33,6 +33,7 @@ kafka:
      - KAFKA_ADVERTISED_HOST_NAME=127.0.0.1
      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
      - KAFKA_ADVERTISED_PORT=9092
+     - KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
 zookeeper:
     image: wurstmeister/zookeeper
     ports:
