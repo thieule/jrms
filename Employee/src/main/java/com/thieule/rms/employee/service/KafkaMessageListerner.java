@@ -9,7 +9,7 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("kafkaMessageListerner")
 public class KafkaMessageListerner {
 	
 	public CountDownLatch latch = new CountDownLatch(3);
