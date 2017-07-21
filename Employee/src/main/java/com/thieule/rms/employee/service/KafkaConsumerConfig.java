@@ -18,7 +18,7 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 @Configuration
 public class KafkaConsumerConfig {
 
-    @Value(value = "localhost:9092")
+    @Value(value = "128.199.192.1:9092")
     private String bootstrapAddress;
 
     public ConsumerFactory<String, String> consumerFactory(String groupId) {
