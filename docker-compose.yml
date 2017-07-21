@@ -25,19 +25,19 @@ mongodb:
 kafka:
     image: 'wurstmeister/kafka:0.10.1.1'
     ports:
-     - "9093:9093"
+     - "9092:9092"
     hostname: kafka
     links: 
      - zookeeper
     environment:
-     - KAFKA_ADVERTISED_HOST_NAME=127.0.0.1
+     - KAFKA_ADVERTISED_HOST_NAME=128.199.192.1
      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
      - KAFKA_ADVERTISED_PORT=9092
      - KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
 zookeeper:
     image: wurstmeister/zookeeper
     ports:
-      - "2182:2182"
+      - "2181:2181"
 ha_employee:
  image: tutum/haproxy
  links:
