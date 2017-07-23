@@ -7,7 +7,6 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:com.thieule.rms.employee.EmployeeBoot</config>
 		<config>src/main/resources/xml/outbound-kafka-integration.xml</config>
 	</configs>
 	<autoconfigs>

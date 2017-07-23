@@ -1,4 +1,4 @@
-package com.thieule.rms.booking.controller;
+package com.thieule.rms.controller;
 
 import java.util.List;
 
@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thieule.rms.booking.model.Booking;
-import com.thieule.rms.booking.repo.BookingRepository;
+import com.thieule.rms.model.Booking;
+import com.thieule.rms.model.Employee;
+import com.thieule.rms.repo.BookingRepository;
+import com.thieule.rms.repo.EmployeeRepository;
 
 @RestController
 @RequestMapping("/booking")
@@ -18,6 +20,9 @@ public class BookingController {
 	
 	@Autowired
 	BookingRepository bookingRepository;
+	
+	@Autowired
+	EmployeeRepository employeeRepository;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public Booking create(@RequestBody Booking booking) {
@@ -33,6 +38,11 @@ public class BookingController {
 	@RequestMapping(method = RequestMethod.GET, value="/")
 	public List<Booking> getAll() {
 		return bookingRepository.findAll();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/employee")
+	public List<Employee> getAllEmployee() {
+		return employeeRepository.findAll();
 	}
 	
 }

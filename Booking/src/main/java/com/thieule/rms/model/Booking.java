@@ -1,4 +1,4 @@
-package com.thieule.rms.booking.model;
+package com.thieule.rms.model;
 
 import java.sql.Date;
 

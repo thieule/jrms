@@ -12,48 +12,33 @@ booking:
  links:
   - mongodb
   - kafka
-project:
- build: Project
- ports:
-  - "8080"
- links:
-  - mongodb
-  - kafka
 mongodb:
  image: mongo
-
 kafka:
-    image: 'wurstmeister/kafka:0.10.1.1'
+    image: 'wurstmeister/kafka'
     ports:
      - "9092:9092"
     hostname: kafka
     links: 
      - zookeeper
     environment:
-     - KAFKA_ADVERTISED_HOST_NAME=128.199.192.1
+     - KAFKA_ADVERTISED_HOST_NAME=kafka
      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
      - KAFKA_ADVERTISED_PORT=9092
      - KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
-     - KAFKA_CREATE_TOPICS="thieu:1:1, thieu2:1:1"
 zookeeper:
     image: wurstmeister/zookeeper
     ports:
       - "2181:2181"
 ha_employee:
- image: tutum/haproxy
- links:
-   - employee
- ports:
-   - "8080:80"
+    image: tutum/haproxy
+    links:
+      - employee
+    ports:
+      - "8080:80" 
 ha_booking:
- image: tutum/haproxy
- links:
-   - booking
- ports:
-   - "8081:80"
-ha_project:
- image: tutum/haproxy
- links:
-   - project
- ports:
-   - "8082:80"   
+    image: tutum/haproxy
+    links:
+      - booking
+    ports:
+      - "8081:80"  
