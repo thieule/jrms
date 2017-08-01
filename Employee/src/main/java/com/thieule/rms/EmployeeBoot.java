@@ -20,5 +20,4 @@ public class EmployeeBoot {
 	   @Autowired
 		private Environment env;
 
-	   
 }
