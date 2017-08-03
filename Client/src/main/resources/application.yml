@@ -4,7 +4,7 @@ zuul:
   routes:
     oauth:
       path: /oauth/**
-      url: http://localhost:8085/jrms-oauth/oauth
+      url: http://128.199.198.30:8085/jrms-oauth/oauth
   Servlet30WrapperFilter:
     pre:
       disable:true
