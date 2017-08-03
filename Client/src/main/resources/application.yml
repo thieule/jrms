@@ -1,0 +1,10 @@
+server:
+    port: 8086
+zuul:
+  routes:
+    oauth:
+      path: /oauth/**
+      url: http://localhost:8085/jrms-oauth/oauth
+  Servlet30WrapperFilter:
+    pre:
+      disable:true
